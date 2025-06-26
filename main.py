@@ -34,9 +34,9 @@ while True:
     print("4. Delete book")
     print("5. Exit")
     print("-----------------Selection:-------------------")
-    choise = input()
+    choice = input()
 
-    match choise:
+    match choice:
         case "1":
             print("Book Details:")
             for book in books:
@@ -62,6 +62,7 @@ while True:
                 "genre": genre
             }
             )
+
         case "3":
             print("Select id to be corrected:")
             id_to_correct = input()
