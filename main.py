@@ -86,7 +86,6 @@ while True:
                     print(f"{book['id']}. Delete: Books {book['name']} {book['surname']} {book['title']} {book['genre']}")
                     print("Book deleted.")
                     break
-
         case "5":
             print("Exit page:")
             break
