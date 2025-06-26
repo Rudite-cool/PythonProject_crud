@@ -67,8 +67,7 @@ while True:
             id_to_correct = input()
             for book in books:
                 if id_to_correct == str(book['id']):
-                    print(f"{book['id']},Name: {book['name']}, Title: {book['title']}, Genre: {book['genre']}")
-                    print("Correct:")
+                    print(f"{book['id']},Name: {book['name']}, Surname: {book['surname']}Title: {book['title']}, Genre: {book['genre']}")
                     print("correct name")
                     name = input()
                     print("correct surname")
@@ -77,6 +76,7 @@ while True:
                     title = input()
                     print("add genre")
                     genre = input()
+                    print("updated")
                     break
         case "4":
             print("Select id to be deleted:")
@@ -86,6 +86,7 @@ while True:
                     print(f"{book['id']}. Delete: Books {book['name']} {book['surname']} {book['title']} {book['genre']}")
                     print("Book deleted.")
                     break
+                    del books[books.index(book)]
         case "5":
             print("Exit page:")
             break
