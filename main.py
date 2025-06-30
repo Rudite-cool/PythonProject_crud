@@ -1,102 +1,31 @@
 # This is a sample Python script.
+from fileCrud import correct_authors, delete_authors, create_authors, print_info, load_authors
+
+authors = load_authors()
 
 
-books = [
-    {
-        'id': 1,
-        "name": "Agatha",
-        "surname": "Christie",
-        "title": "The Clocks",
-        "genre": "Detective"
-    },
-    {
-        'id': 2,
-        "name": "George",
-        "surname": "Orwell",
-        "title": "Farm",
-        "genre": "Allegory"
-    },
-    {
-        'id': 3,
-        "name": "Charlotte",
-        "surname": "Brontë",
-        "title": "Jane Eyre",
-        "genre": "Novel"
-    }
-]
-id_counter=3
+def print_authors(authors):
+    pass
+
 
 while True:
-    print("---------------------------------------------")
-    print("1. Show all books")
-    print("2. Add new book")
-    print("3. Correct list")
-    print("4. Delete book")
-    print("5. Exit")
-    print("-----------------Selection:-------------------")
+    print_info()
     choice = input()
+
 
     match choice:
         case "1":
-            print("Book Details:")
-            for book in books:
-                print(f"Id: {book['id']}, Name: {book['name']}, Title: {book['title']}, Genre: {book['genre']}")
-            print("-----------------------------------------------------------------")
+            print_authors(authors)
         case "2":
-            print("Add new:")
-            print("add name")
-            name = input()
-            print("add surname")
-            surname = input()
-            print("add title")
-            title = input()
-            print("add genre")
-            genre = input()
-            id_counter += 1
-            books.append(
-            {
-                'id': id_counter,
-                "name": name,
-                "surname": surname,
-                "title": title,
-                "genre": genre
-            }
-            )
-
+            create_authors(authors)
         case "3":
-            print("Select id to be corrected:")
-            id_to_correct = input()
-            for book in books:
-                if id_to_correct == str(book['id']):
-                    print(f"{book['id']},Name: {book['name']}, Surname: {book['surname']}, Title: {book['title']}, Genre: {book['genre']}")
-                    print("correct name")
-                    name = input()
-                    print("correct surname")
-                    surname = input()
-                    print("add title")
-                    title = input()
-                    print("add genre")
-                    genre = input()
-                    book['name'] = name
-                    book['surname'] = surname
-                    book['title'] = title
-                    book['genre'] = genre
-
-                    print("updated")
-
-                    break
+            correct_authors(authors)
         case "4":
-            print("Select id to be deleted:")
-            id_to_delete = input()
-            for book in books:
-                if id_to_delete == str(book['id']):
-                    print(f"{book['id']}. Delete: Books {book['name']} {book['surname']} {book['title']} {book['genre']}")
-
-                    del books[books.index(book)]
-                    break
+            delete_authors(authors)
         case "5":
             print("Exit page:")
             break
+
 
 
 
