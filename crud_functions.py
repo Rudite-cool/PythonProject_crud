@@ -10,8 +10,8 @@ def show_books():
 def add_book():
     global id_counter
     print("Add new:")
-    name = input("Add name: ")
-    surname = input("Add surname: ")
+    name = input("Add name:")
+    surname = input("Add surname:")
     title = input("Add title: ")
     genre = input("Add genre: ")
     id_counter += 1

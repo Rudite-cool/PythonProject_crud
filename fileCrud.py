@@ -16,22 +16,21 @@ def save_authors(authors):
         writer.writeheader()
         writer.writerows(authors)
 
-def create_authors(authors):
-    print("adding authors:")
-    print("add name")
-    name = input()
-    print("add surname")
-    surname = input()
+def add_authors(authors):
+    print("Adding author:")
+    name = input("Add name: ")
+    surname = input("Add surname: ")
     new_id = str(int(authors[-1]['id']) + 1) if len(authors) > 0 else '1'
-    authors.append(  {
-                    'id': new_id,
-                    "name":name,
-                    "surname":surname,
-                })
+    authors.append({
+        'id': new_id,
+        'name': name,
+        'surname': surname,
+    })
     save_authors(authors)
+    print("Author added!")
 
 def correct_authors(authors):
-    print("select id to be corrected.")
+    print("Select ID to be corrected:")
     id = input()
     for auth in authors:
         if id == str(auth['id']):
@@ -39,28 +38,35 @@ def correct_authors(authors):
             auth['name'] = input("Correct name: ")
             auth['surname'] = input("Correct surname: ")
             save_authors(authors)
+            print("Author updated!")
+            return
+    print("Author not found!")
 
 def delete_authors(authors):
-    id_to_delete = input("Select id to be deleted: ")
+    id_to_delete = input("Select ID to be deleted: ")
     for auth in authors:
         if id_to_delete == str(auth['id']):
-            print(f"{auth['id']}. Delete: {auth['name']} {auth['surname']} ")
+            print(f"{auth['id']}. Delete: {auth['name']} {auth['surname']}")
             authors.remove(auth)
+            save_authors(authors)
             print("Author deleted!")
-        save_authors(auth)
+            return
+    print("Author not found!")
+
 def print_info():
-    authors = load_authors()  # <-- Ielasām datus no CSV faila
+    print("---------------------------------------")
+    print("1. Show all authors")
+    print("2. Add author")
+    print("3. Correct author")
+    print("4. Delete author")
+    print("5. Exit")
+    print("------------------Select--------------------")
 
-    while True:
-        print("---------------------------------------------")
-        print("1. Show all authors")
-        print("2. Add author")
-        print("3. Edit author")
-        print("4. Delete author")
-        print("5. Exit")
-        choice = input("Choose: ")
-
-
+def print_authors(authors):
+    print("Author list:")
+    for auth in authors:
+        print(f"{auth['id']}: {auth['name']} {auth['surname']}")
+    print("--------------------------------------------------")
 
 
 
