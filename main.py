@@ -16,7 +16,7 @@ while True:
         case "3":
             correct_author(authors)
         case "4":
-            delete_authors(authors)
+            delete_author(authors)
         case "5":
             print("Exit page:")
             break

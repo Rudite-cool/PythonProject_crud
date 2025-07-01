@@ -4,7 +4,7 @@ DB_CONFIG = {
     'host':'localhost',
     'port': 3306,
     'user':'root',
-    'password':"",
+    'password':"Buzils75!",
     'database':'library'
 }
 headers = ['id', 'name', 'surname']
@@ -64,6 +64,21 @@ def correct_author(authors):
         conn.commit()
     cur.close()
     conn.close()
+
+
+def delete_author(authors):
+    print("Select ID to be deleted: ")
+    id = input()
+
+    conn = get_conn()
+    cur = conn.cursor()
+
+    cur.execute("DELETE FROM authors WHERE id = %s", (id,))
+    conn.commit()
+
+    cur.close()
+    conn.close()
+    print("deleted")
 
 
 
