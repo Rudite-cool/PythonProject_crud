@@ -1,9 +1,10 @@
 # This is a sample Python script.
-from fileCrud import correct_authors, delete_authors, load_authors, add_authors, print_authors, print_info
 
-authors = load_authors()
+from db_CRUD import*
+from fileCrud import print_authors, print_info
 
 while True:
+    authors = load_authors()
     print_info()
     choice = input()
 
