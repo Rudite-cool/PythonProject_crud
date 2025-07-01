@@ -26,3 +26,42 @@ def load_authors():
             author[headers[i]] = str(row[i])
         authors.append(author)
     return authors
+
+def add_author(authors):
+    print("Adding author:")
+    print("Add name:")
+    name = input()
+    print("Add surname:")
+    surname = input()
+
+    conn = get_conn()
+    cur = conn.cursor()
+
+    cur.execute("INSERT INTO authors(name, surname) VALUES (%s, %s)",
+                (name, surname))
+    conn.commit()
+
+    cur.close()
+    conn.close()
+
+def correct_author(authors):
+    print("Select ID to be corrected.")
+    id = input()
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute("select * from authors WHERE id = %s",(id,))
+    row = cur.fetchone()
+    if row:
+        print(f"{row[0]}. author {row[1]} {row[2]}")
+        print("enter name")
+        name = input()
+        print("enter surname")
+        surname = input()
+        cur.execute(
+            "UPDATE authors SET name = %s, surname = %s WHERE id = %s;",
+            (name, surname, id)
+        )
+        conn.commit()
+    cur.close()
+    conn.close()
+

@@ -12,9 +12,9 @@ while True:
         case "1":
             print_authors(authors)
         case "2":
-            add_authors(authors)
+            add_author(authors)
         case "3":
-            correct_authors(authors)
+            correct_author(authors)
         case "4":
             delete_authors(authors)
         case "5":
